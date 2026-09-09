@@ -4,10 +4,17 @@ export function formatNumber(value: number | null | undefined, unit: MetricUnit)
   if (value == null || Number.isNaN(value)) return "—";
 
   if (unit === "sec") {
-    const ms = value * 1000;
-    if (ms < 1) return `${(ms * 1000).toFixed(0)} мкс`;
-    if (ms < 10) return `${ms.toFixed(2)} мс`;
-    return `${ms.toFixed(1)} мс`;
+    // Disk latency is < 1 s; Page life expectancy is thousands of seconds.
+    if (value < 1) {
+      const ms = value * 1000;
+      if (ms < 1) return `${(ms * 1000).toFixed(0)} мкс`;
+      if (ms < 10) return `${ms.toFixed(2)} мс`;
+      return `${ms.toFixed(1)} мс`;
+    }
+    if (value < 90) return `${value < 10 ? value.toFixed(1) : Math.round(value)} с`;
+    if (value < 3600) return `${Math.round(value / 60)} мин`;
+    const hours = value / 3600;
+    return `${hours >= 10 ? hours.toFixed(0) : hours.toFixed(1)} ч`;
   }
 
   if (unit === "bytes") {
