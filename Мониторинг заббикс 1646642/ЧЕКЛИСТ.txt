@@ -1,0 +1,12 @@
+# Чеклист развёртывания 1646642
+
+[ ] Zabbix agent 2 на SQL-сервере
+[ ] 01-Хост-Windows\Install-ZabbixAgent.ps1 выполнен
+[ ] Timeout=10, Include на zabbix_agent2.d
+[ ] C:\zabbix\Collect-WinMssqlSnapshot.ps1 печатает JSON
+[ ] Импорт 02-Zabbix-сервер\template_win_mssql_snapshot.yaml
+[ ] Хосту: Windows by Zabbix agent
+[ ] Хосту: MSSQL by Zabbix agent 2 (mssql.conf, макросы URI/USER/PASSWORD)
+[ ] Хосту: Windows OS and MSSQL snapshot
+[ ] Элемент win.mssql.snapshot не Unsupported
+[ ] На графиках есть CPU ОС и PLE / Batch Requests SQL

@@ -1,4 +1,4 @@
-# Collect-WinMssqlSnapshot.ps1
+﻿# Collect-WinMssqlSnapshot.ps1
 # One-shot Windows PerfMon + SQL Server counters for Zabbix.
 # Cooked values, same family as perfmon.exe / typeperf -sc 1.
 

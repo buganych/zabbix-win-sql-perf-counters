@@ -19,6 +19,11 @@ param(
 $ErrorActionPreference = 'Continue'
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 
+$settingsFile = Join-Path $PSScriptRoot 'settings.ps1'
+if ((Test-Path -LiteralPath $settingsFile) -and -not $PSBoundParameters.ContainsKey('SqlInstance')) {
+    . $settingsFile
+}
+
 function Write-Err([string]$Message) {
     [Console]::Error.WriteLine($Message)
 }

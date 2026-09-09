@@ -41,7 +41,12 @@ export function ZabbixView() {
         <h1 className="text-2xl font-medium tracking-tight">Вывод в Zabbix</h1>
         <p className="mt-1 max-w-3xl text-sm text-muted-foreground">
           Для постоянных графиков ОС и СУБД используйте штатные шаблоны. Коллектор нужен, когда надо снять всё одним
-          вызовом, проверить имена объектов или отправить разовый trapper.
+          вызовом, проверить имена объектов или отправить разовый trapper. Весь комплект развёртывания — архив для{" "}
+          <code className="font-mono">C:\Работа\Заслон\Мониторинг заббикс 1646642</code>:{" "}
+          <a className="underline underline-offset-2" href="/%D0%9C%D0%BE%D0%BD%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D0%BD%D0%B3%20%D0%B7%D0%B0%D0%B1%D0%B1%D0%B8%D0%BA%D1%81%201646642.zip">
+            скачать ZIP
+          </a>
+          .
         </p>
       </div>
 

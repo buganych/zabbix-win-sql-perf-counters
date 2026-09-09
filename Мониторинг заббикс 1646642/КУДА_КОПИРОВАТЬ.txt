@@ -1,0 +1,23 @@
+Каталог развёртывания Zabbix: ОС Windows + MSSQL
+Задача / номер: 1646642
+
+Целевой путь на рабочей машине:
+  C:\Работа\Заслон\Мониторинг заббикс 1646642
+
+Как положить комплект на место
+  1. Распакуйте ZIP в C:\Работа\Заслон\
+     внутри архива уже папка «Мониторинг заббикс 1646642».
+  2. Либо скопируйте эту папку целиком в C:\Работа\Заслон\.
+  3. Если комплект открыт из другого места:
+     powershell -NoProfile -ExecutionPolicy Bypass -File .\Install-ToWorkFolder.ps1
+
+Состав
+  01-Хост-Windows     коллектор PerfMon+SQL, UserParameter, установка на агент
+  02-Zabbix-сервер    YAML-шаблон, таблица ключей, официальные шаблоны
+  03-Разовая-отправка  zabbix_sender
+
+Порядок
+  1. Прочитайте РАЗВЕРТЫВАНИЕ.md
+  2. На SQL-сервере: 01-Хост-Windows\Install-ZabbixAgent.ps1
+  3. На сервере Zabbix: импорт 02-Zabbix-сервер\template_win_mssql_snapshot.yaml
+  4. Назначьте хосту также «Windows by Zabbix agent» и «MSSQL by Zabbix agent 2»
