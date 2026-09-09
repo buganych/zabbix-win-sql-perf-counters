@@ -1,0 +1,483 @@
+{
+  "meta": {
+    "host": "SQL01.corp.local",
+    "collected_at": "2026-09-09T07:15:22+03:00",
+    "sample_interval_sec": 1,
+    "sql_instance": "MSSQLSERVER",
+    "sql_object_prefix": "SQLServer",
+    "collector": "Collect-WinMssqlSnapshot.ps1",
+    "demo": true
+  },
+  "values": {
+    "os.cpu.util": 61.4,
+    "os.cpu.privileged": 12.8,
+    "os.cpu.user": 48.1,
+    "os.cpu.interrupt": 1.4,
+    "os.cpu.dpc": 2.1,
+    "os.cpu.queue": 3,
+    "os.system.context_switches": 8420,
+    "os.system.threads": 1842,
+    "os.memory.available_mbytes": 1842,
+    "os.memory.committed_pct": 67.3,
+    "os.memory.pages_sec": 18.4,
+    "os.memory.page_faults_sec": 1240,
+    "os.memory.pool_nonpaged": 186400000,
+    "os.memory.free_pte": 12480000,
+    "os.paging.usage": 8.2,
+    "os.disk.reads_sec": 142.6,
+    "os.disk.writes_sec": 88.3,
+    "os.disk.queue": 1.2,
+    "os.disk.idle": 64.5,
+    "os.disk.avg_read_sec": 0.0048,
+    "os.disk.avg_write_sec": 0.0061,
+    "mssql.buffer_cache_hit_ratio": 99.12,
+    "mssql.page_life_expectancy": 4280,
+    "mssql.lazy_writes_sec": 0.4,
+    "mssql.checkpoint_pages_sec": 32.1,
+    "mssql.page_reads_sec": 24.7,
+    "mssql.page_writes_sec": 41.2,
+    "mssql.free_list_stalls_sec": 0,
+    "mssql.batch_requests_sec": 612.8,
+    "mssql.sql_compilations_sec": 38.4,
+    "mssql.sql_recompilations_sec": 1.2,
+    "mssql.user_connections": 86,
+    "mssql.processes_blocked": 0,
+    "mssql.logins_sec": 0.3,
+    "mssql.total_server_memory_kb": 28311552,
+    "mssql.target_server_memory_kb": 29360128,
+    "mssql.memory_grants_pending": 0,
+    "mssql.lock_waits_sec": 0.2,
+    "mssql.deadlocks_sec": 0,
+    "mssql.full_scans_sec": 4.1,
+    "mssql.index_searches_sec": 18420,
+    "mssql.page_splits_sec": 6.3,
+    "mssql.latch_waits_sec": 11.8
+  },
+  "metrics": [
+    {
+      "id": "os.cpu.util",
+      "source": "os",
+      "group": "CPU",
+      "name": "Загрузка CPU",
+      "path": "\\Processor Information(_Total)\\% Processor Time",
+      "value": 61.4,
+      "unit": "%"
+    },
+    {
+      "id": "os.cpu.privileged",
+      "source": "os",
+      "group": "CPU",
+      "name": "CPU privileged time",
+      "path": "\\Processor Information(_Total)\\% Privileged Time",
+      "value": 12.8,
+      "unit": "%"
+    },
+    {
+      "id": "os.cpu.user",
+      "source": "os",
+      "group": "CPU",
+      "name": "CPU user time",
+      "path": "\\Processor Information(_Total)\\% User Time",
+      "value": 48.1,
+      "unit": "%"
+    },
+    {
+      "id": "os.cpu.interrupt",
+      "source": "os",
+      "group": "CPU",
+      "name": "CPU interrupt time",
+      "path": "\\Processor Information(_Total)\\% Interrupt Time",
+      "value": 1.4,
+      "unit": "%"
+    },
+    {
+      "id": "os.cpu.dpc",
+      "source": "os",
+      "group": "CPU",
+      "name": "CPU DPC time",
+      "path": "\\Processor Information(_Total)\\% DPC Time",
+      "value": 2.1,
+      "unit": "%"
+    },
+    {
+      "id": "os.cpu.queue",
+      "source": "os",
+      "group": "CPU",
+      "name": "Processor Queue Length",
+      "path": "\\System\\Processor Queue Length",
+      "value": 3,
+      "unit": "count"
+    },
+    {
+      "id": "os.system.context_switches",
+      "source": "os",
+      "group": "Система",
+      "name": "Context Switches/sec",
+      "path": "\\System\\Context Switches/sec",
+      "value": 8420,
+      "unit": "/sec"
+    },
+    {
+      "id": "os.system.threads",
+      "source": "os",
+      "group": "Система",
+      "name": "Threads",
+      "path": "\\System\\Threads",
+      "value": 1842,
+      "unit": "count"
+    },
+    {
+      "id": "os.memory.available_mbytes",
+      "source": "os",
+      "group": "Память",
+      "name": "Available MBytes",
+      "path": "\\Memory\\Available MBytes",
+      "value": 1842,
+      "unit": "MB"
+    },
+    {
+      "id": "os.memory.committed_pct",
+      "source": "os",
+      "group": "Память",
+      "name": "% Committed Bytes In Use",
+      "path": "\\Memory\\% Committed Bytes In Use",
+      "value": 67.3,
+      "unit": "%"
+    },
+    {
+      "id": "os.memory.pages_sec",
+      "source": "os",
+      "group": "Память",
+      "name": "Pages/sec",
+      "path": "\\Memory\\Pages/sec",
+      "value": 18.4,
+      "unit": "/sec"
+    },
+    {
+      "id": "os.memory.page_faults_sec",
+      "source": "os",
+      "group": "Память",
+      "name": "Page Faults/sec",
+      "path": "\\Memory\\Page Faults/sec",
+      "value": 1240,
+      "unit": "/sec"
+    },
+    {
+      "id": "os.memory.pool_nonpaged",
+      "source": "os",
+      "group": "Память",
+      "name": "Pool Nonpaged Bytes",
+      "path": "\\Memory\\Pool Nonpaged Bytes",
+      "value": 186400000,
+      "unit": "bytes"
+    },
+    {
+      "id": "os.memory.free_pte",
+      "source": "os",
+      "group": "Память",
+      "name": "Free System Page Table Entries",
+      "path": "\\Memory\\Free System Page Table Entries",
+      "value": 12480000,
+      "unit": "count"
+    },
+    {
+      "id": "os.paging.usage",
+      "source": "os",
+      "group": "Память",
+      "name": "Paging File % Usage",
+      "path": "\\Paging File(_Total)\\% Usage",
+      "value": 8.2,
+      "unit": "%"
+    },
+    {
+      "id": "os.disk.reads_sec",
+      "source": "os",
+      "group": "Диск",
+      "name": "Disk Reads/sec (_Total)",
+      "path": "\\PhysicalDisk(_Total)\\Disk Reads/sec",
+      "value": 142.6,
+      "unit": "/sec"
+    },
+    {
+      "id": "os.disk.writes_sec",
+      "source": "os",
+      "group": "Диск",
+      "name": "Disk Writes/sec (_Total)",
+      "path": "\\PhysicalDisk(_Total)\\Disk Writes/sec",
+      "value": 88.3,
+      "unit": "/sec"
+    },
+    {
+      "id": "os.disk.queue",
+      "source": "os",
+      "group": "Диск",
+      "name": "Current Disk Queue Length",
+      "path": "\\PhysicalDisk(_Total)\\Current Disk Queue Length",
+      "value": 1.2,
+      "unit": "count"
+    },
+    {
+      "id": "os.disk.idle",
+      "source": "os",
+      "group": "Диск",
+      "name": "% Idle Time",
+      "path": "\\PhysicalDisk(_Total)\\% Idle Time",
+      "value": 64.5,
+      "unit": "%"
+    },
+    {
+      "id": "os.disk.avg_read_sec",
+      "source": "os",
+      "group": "Диск",
+      "name": "Avg. Disk sec/Read",
+      "path": "\\PhysicalDisk(_Total)\\Avg. Disk sec/Read",
+      "value": 0.0048,
+      "unit": "sec"
+    },
+    {
+      "id": "os.disk.avg_write_sec",
+      "source": "os",
+      "group": "Диск",
+      "name": "Avg. Disk sec/Write",
+      "path": "\\PhysicalDisk(_Total)\\Avg. Disk sec/Write",
+      "value": 0.0061,
+      "unit": "sec"
+    },
+    {
+      "id": "mssql.buffer_cache_hit_ratio",
+      "source": "mssql",
+      "group": "Buffer Manager",
+      "name": "Buffer cache hit ratio",
+      "path": "\\SQLServer:Buffer Manager\\Buffer cache hit ratio",
+      "value": 99.12,
+      "unit": "%"
+    },
+    {
+      "id": "mssql.page_life_expectancy",
+      "source": "mssql",
+      "group": "Buffer Manager",
+      "name": "Page life expectancy",
+      "path": "\\SQLServer:Buffer Manager\\Page life expectancy",
+      "value": 4280,
+      "unit": "sec"
+    },
+    {
+      "id": "mssql.lazy_writes_sec",
+      "source": "mssql",
+      "group": "Buffer Manager",
+      "name": "Lazy writes/sec",
+      "path": "\\SQLServer:Buffer Manager\\Lazy writes/sec",
+      "value": 0.4,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.checkpoint_pages_sec",
+      "source": "mssql",
+      "group": "Buffer Manager",
+      "name": "Checkpoint pages/sec",
+      "path": "\\SQLServer:Buffer Manager\\Checkpoint pages/sec",
+      "value": 32.1,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.page_reads_sec",
+      "source": "mssql",
+      "group": "Buffer Manager",
+      "name": "Page reads/sec",
+      "path": "\\SQLServer:Buffer Manager\\Page reads/sec",
+      "value": 24.7,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.page_writes_sec",
+      "source": "mssql",
+      "group": "Buffer Manager",
+      "name": "Page writes/sec",
+      "path": "\\SQLServer:Buffer Manager\\Page writes/sec",
+      "value": 41.2,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.free_list_stalls_sec",
+      "source": "mssql",
+      "group": "Buffer Manager",
+      "name": "Free list stalls/sec",
+      "path": "\\SQLServer:Buffer Manager\\Free list stalls/sec",
+      "value": 0,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.batch_requests_sec",
+      "source": "mssql",
+      "group": "SQL Statistics",
+      "name": "Batch Requests/sec",
+      "path": "\\SQLServer:SQL Statistics\\Batch Requests/sec",
+      "value": 612.8,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.sql_compilations_sec",
+      "source": "mssql",
+      "group": "SQL Statistics",
+      "name": "SQL Compilations/sec",
+      "path": "\\SQLServer:SQL Statistics\\SQL Compilations/sec",
+      "value": 38.4,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.sql_recompilations_sec",
+      "source": "mssql",
+      "group": "SQL Statistics",
+      "name": "SQL Re-Compilations/sec",
+      "path": "\\SQLServer:SQL Statistics\\SQL Re-Compilations/sec",
+      "value": 1.2,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.user_connections",
+      "source": "mssql",
+      "group": "General Statistics",
+      "name": "User Connections",
+      "path": "\\SQLServer:General Statistics\\User Connections",
+      "value": 86,
+      "unit": "count"
+    },
+    {
+      "id": "mssql.processes_blocked",
+      "source": "mssql",
+      "group": "General Statistics",
+      "name": "Processes blocked",
+      "path": "\\SQLServer:General Statistics\\Processes blocked",
+      "value": 0,
+      "unit": "count"
+    },
+    {
+      "id": "mssql.logins_sec",
+      "source": "mssql",
+      "group": "General Statistics",
+      "name": "Logins/sec",
+      "path": "\\SQLServer:General Statistics\\Logins/sec",
+      "value": 0.3,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.total_server_memory_kb",
+      "source": "mssql",
+      "group": "Memory Manager",
+      "name": "Total Server Memory",
+      "path": "\\SQLServer:Memory Manager\\Total Server Memory (KB)",
+      "value": 28311552,
+      "unit": "KB"
+    },
+    {
+      "id": "mssql.target_server_memory_kb",
+      "source": "mssql",
+      "group": "Memory Manager",
+      "name": "Target Server Memory",
+      "path": "\\SQLServer:Memory Manager\\Target Server Memory (KB)",
+      "value": 29360128,
+      "unit": "KB"
+    },
+    {
+      "id": "mssql.memory_grants_pending",
+      "source": "mssql",
+      "group": "Memory Manager",
+      "name": "Memory Grants Pending",
+      "path": "\\SQLServer:Memory Manager\\Memory Grants Pending",
+      "value": 0,
+      "unit": "count"
+    },
+    {
+      "id": "mssql.lock_waits_sec",
+      "source": "mssql",
+      "group": "Locks",
+      "name": "Lock Waits/sec",
+      "path": "\\SQLServer:Locks(_Total)\\Lock Waits/sec",
+      "value": 0.2,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.deadlocks_sec",
+      "source": "mssql",
+      "group": "Locks",
+      "name": "Number of Deadlocks/sec",
+      "path": "\\SQLServer:Locks(_Total)\\Number of Deadlocks/sec",
+      "value": 0,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.full_scans_sec",
+      "source": "mssql",
+      "group": "Access Methods",
+      "name": "Full Scans/sec",
+      "path": "\\SQLServer:Access Methods\\Full Scans/sec",
+      "value": 4.1,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.index_searches_sec",
+      "source": "mssql",
+      "group": "Access Methods",
+      "name": "Index Searches/sec",
+      "path": "\\SQLServer:Access Methods\\Index Searches/sec",
+      "value": 18420,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.page_splits_sec",
+      "source": "mssql",
+      "group": "Access Methods",
+      "name": "Page Splits/sec",
+      "path": "\\SQLServer:Access Methods\\Page Splits/sec",
+      "value": 6.3,
+      "unit": "/sec"
+    },
+    {
+      "id": "mssql.latch_waits_sec",
+      "source": "mssql",
+      "group": "Latches",
+      "name": "Latch Waits/sec",
+      "path": "\\SQLServer:Latches\\Latch Waits/sec",
+      "value": 11.8,
+      "unit": "/sec"
+    }
+  ],
+  "disks": [
+    {
+      "instance": "_Total",
+      "reads_sec": 142.6,
+      "writes_sec": 88.3,
+      "queue": 1.2,
+      "idle_pct": 64.5,
+      "avg_read_sec": 0.0048,
+      "avg_write_sec": 0.0061
+    },
+    {
+      "instance": "0 C:",
+      "reads_sec": 12.1,
+      "writes_sec": 9.4,
+      "queue": 0.1,
+      "idle_pct": 92.2,
+      "avg_read_sec": 0.0031,
+      "avg_write_sec": 0.0044
+    },
+    {
+      "instance": "1 D:",
+      "reads_sec": 98.4,
+      "writes_sec": 41.8,
+      "queue": 0.8,
+      "idle_pct": 58.1,
+      "avg_read_sec": 0.0052,
+      "avg_write_sec": 0.0068
+    },
+    {
+      "instance": "2 L:",
+      "reads_sec": 0.2,
+      "writes_sec": 37.1,
+      "queue": 0.3,
+      "idle_pct": 71.4,
+      "avg_read_sec": 0.0021,
+      "avg_write_sec": 0.0028
+    }
+  ]
+}

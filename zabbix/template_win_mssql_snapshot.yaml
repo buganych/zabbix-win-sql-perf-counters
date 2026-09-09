@@ -1,0 +1,368 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 'ce46b9cc71cd4c8092de20b931c16895'
+      name: Templates/Databases
+  templates:
+    - uuid: '661504b4d42d40ebbe48bbc790ddfc7d'
+      template: 'Windows OS and MSSQL snapshot'
+      name: 'Windows OS and MSSQL snapshot'
+      description: |
+        Один элемент win.mssql.snapshot снимает JSON коллектора Collect-WinMssqlSnapshot.ps1.
+        Для постоянных графиков предпочтительны шаблоны Windows by Zabbix agent и MSSQL by Zabbix agent 2.
+      groups:
+        - name: Templates/Databases
+      items:
+        - uuid: 'd138badf11d64273a12537c8fc19f223'
+          name: 'Get OS+MSSQL snapshot'
+          type: ZABBIX_ACTIVE
+          key: win.mssql.snapshot
+          delay: 1m
+          history: 1d
+          trends: '0'
+          value_type: TEXT
+          description: JSON коллектора PerfMon + MSSQL. Timeout агента >= 10s.
+        - uuid: 'ca3d4857fc2a473ca86206e7e2d69786'
+          name: 'Загрузка CPU'
+          type: DEPENDENT
+          key: 'snapshot.os.cpu.util'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.cpu.util"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'd11f82b5a33f45df827d1783f760655c'
+          name: 'CPU privileged time'
+          type: DEPENDENT
+          key: 'snapshot.os.cpu.privileged'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.cpu.privileged"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '4170034a100d40fa982f1876202403de'
+          name: 'CPU user time'
+          type: DEPENDENT
+          key: 'snapshot.os.cpu.user'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.cpu.user"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '6dec5e0fb76549c98d53ea17abd1597d'
+          name: 'Processor Queue Length'
+          type: DEPENDENT
+          key: 'snapshot.os.cpu.queue'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.cpu.queue"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'e4d3138026f14fbabaab59ac24865ca0'
+          name: 'Available MBytes'
+          type: DEPENDENT
+          key: 'snapshot.os.memory.available_mbytes'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: 'B'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.memory.available_mbytes"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'f7a6d6d74f084410852d8d23eb18a1ce'
+          name: 'Commit %'
+          type: DEPENDENT
+          key: 'snapshot.os.memory.committed_pct'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.memory.committed_pct"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'c1562cde8a664448986e67ab25490cd1'
+          name: 'Pages/sec'
+          type: DEPENDENT
+          key: 'snapshot.os.memory.pages_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.memory.pages_sec"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '4e4bebb30fb64daea242725f7d88f704'
+          name: 'Paging File % Usage'
+          type: DEPENDENT
+          key: 'snapshot.os.paging.usage'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.paging.usage"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'e7a261cfea4f43ffb15a6f7a4c14d08f'
+          name: 'Avg. Disk sec/Read'
+          type: DEPENDENT
+          key: 'snapshot.os.disk.avg_read_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: 's'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.disk.avg_read_sec"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '65b679b96c554f1580f6325edbe3b5f3'
+          name: 'Avg. Disk sec/Write'
+          type: DEPENDENT
+          key: 'snapshot.os.disk.avg_write_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: 's'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.disk.avg_write_sec"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'f2cacdd355a94ee3995cb8b112dae535'
+          name: 'Disk queue'
+          type: DEPENDENT
+          key: 'snapshot.os.disk.queue'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.disk.queue"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'b2bf4b1a7ab64cceac5446726e05d99c'
+          name: 'Disk idle %'
+          type: DEPENDENT
+          key: 'snapshot.os.disk.idle'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["os.disk.idle"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '9d7630a2388d46d883ac2b23d95be287'
+          name: 'Buffer cache hit ratio'
+          type: DEPENDENT
+          key: 'snapshot.mssql.buffer_cache_hit_ratio'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: '%'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.buffer_cache_hit_ratio"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '03e00d5f8cf9445d8b4c0d5e621b5c78'
+          name: 'Page life expectancy'
+          type: DEPENDENT
+          key: 'snapshot.mssql.page_life_expectancy'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: 's'
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.page_life_expectancy"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '23e05d20b08d48dfa5cbea06f5f4210a'
+          name: 'Lazy writes/sec'
+          type: DEPENDENT
+          key: 'snapshot.mssql.lazy_writes_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.lazy_writes_sec"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '022935e2769e4781abae98a21b083791'
+          name: 'Page reads/sec'
+          type: DEPENDENT
+          key: 'snapshot.mssql.page_reads_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.page_reads_sec"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'b00a3aef9bf2429abae4cab47b67d8cd'
+          name: 'Batch Requests/sec'
+          type: DEPENDENT
+          key: 'snapshot.mssql.batch_requests_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.batch_requests_sec"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'adf3b546f4384ab1906dcc193ded5155'
+          name: 'SQL Compilations/sec'
+          type: DEPENDENT
+          key: 'snapshot.mssql.sql_compilations_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.sql_compilations_sec"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'ec04e5fd2ad445f2996ec5e05b90f9d3'
+          name: 'User Connections'
+          type: DEPENDENT
+          key: 'snapshot.mssql.user_connections'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.user_connections"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '36571773091d4529bd770d47cd35ddc4'
+          name: 'Processes blocked'
+          type: DEPENDENT
+          key: 'snapshot.mssql.processes_blocked'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.processes_blocked"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '13e37dff208e4e58b9edae9d6169bef4'
+          name: 'Total Server Memory KB'
+          type: DEPENDENT
+          key: 'snapshot.mssql.total_server_memory_kb'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: B
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.total_server_memory_kb"]'
+            - type: MULTIPLIER
+              parameters:
+                - '1024'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '16599ebddbbb461ca5304b4277ebd2f0'
+          name: 'Target Server Memory KB'
+          type: DEPENDENT
+          key: 'snapshot.mssql.target_server_memory_kb'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          units: B
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.target_server_memory_kb"]'
+            - type: MULTIPLIER
+              parameters:
+                - '1024'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '4488bae3305e41bd93ea88f2d389fbd4'
+          name: 'Memory Grants Pending'
+          type: DEPENDENT
+          key: 'snapshot.mssql.memory_grants_pending'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.memory_grants_pending"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: 'f0f16962cdca42438e26685f84b2a4fd'
+          name: 'Lock Waits/sec'
+          type: DEPENDENT
+          key: 'snapshot.mssql.lock_waits_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.lock_waits_sec"]'
+          master_item:
+            key: win.mssql.snapshot
+        - uuid: '04fb592015784e179760e2c196de9b2a'
+          name: 'Deadlocks/sec'
+          type: DEPENDENT
+          key: 'snapshot.mssql.deadlocks_sec'
+          delay: '0'
+          history: 90d
+          value_type: FLOAT
+          preprocessing:
+            - type: JSONPATH
+              parameters:
+                - '$.values["mssql.deadlocks_sec"]'
+          master_item:
+            key: win.mssql.snapshot
